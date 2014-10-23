@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Titulo:</strong>
+  <%= @pautum.titulo %>
+</p>
+
+<p>
+  <strong>Data:</strong>
+  <%= @pautum.created_at.strftime("%d/%m/%Y") %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @pautum.status %>
+</p>
+        <% if can? :update, @pautum %>
+<%= link_to 'Edit', edit_pautum_path(@pautum) %> |
+        <% end %>
+
+
+
+<h1>Item da pauta</h1>
+<%= render'search' %><br>
+        <% if can? :create, @item_pauta %>
+<%= link_to "Novo Item", controller: "item_pauta",
+action: "new",
+pautum: @pautum %>
+        <% end %>
+

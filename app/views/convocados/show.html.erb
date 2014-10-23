@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Motivoausencia:</strong>
+  <%= @convocado.motivoAusencia %>
+</p>
+
+<p>
+  <strong>Presenca:</strong>
+  <%= @convocado.presenca %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @convocado.status %>
+</p>
+
+<p>
+  <strong>Pessoa:</strong>
+  <%= @convocado.pessoa %>
+</p>
+
+<p>
+  <strong>Reuniao:</strong>
+  <%= @convocado.reuniao %>
+</p>
+        <% if can? :update, @convocado %>
+<%= link_to 'Edit', edit_convocado_path(@convocado) %> |
+    <% end %>
+<%= link_to 'Back', convocados_path %>
+
+
+
+
+

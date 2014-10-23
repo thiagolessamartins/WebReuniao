@@ -1,0 +1,36 @@
+<h1>Listing pauta</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>Data</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pauta.each do |pautum| %>
+      <tr>
+        <td><%= pautum.titulo %></td>
+        <td><%= pautum.data %></td>
+        <td><%= pautum.status %></td>
+        <% if can? :read, @pautum %>
+        <td><%= link_to 'Show', pautum %></td>
+    <% end %>
+        <% if can? :update, @pautum %>
+        <td><%= link_to 'Edit', edit_pautum_path(pautum) %></td>
+    <% end %>
+        <% if can? :delete, @pautum %>
+        <td><%= link_to 'Destroy', pautum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+        <% if can? :create, @pautum %>
+<%= link_to 'New Pautum', new_pautum_path %>
+    <% end %>

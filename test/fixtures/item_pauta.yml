@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  observacao: MyText
+  pautum_id: 
+  questao_id: 
+
+two:
+  observacao: MyText
+  pautum_id: 
+  questao_id: 

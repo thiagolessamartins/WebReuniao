@@ -1,0 +1,19 @@
+<% @reuniao.participacaos.each do |participante|  %>
+<p>    
+ <strong>Nome:</strong>
+	<%= participante.pessoa.nome %>
+  
+ <strong>contribuicão:</strong>
+	<%= participante.contribuicao %>
+ <strong>Papel na reunião:</strong>
+	<%= participante.pessoa.user.role %>
+</p>
+<p>
+        <% if can? :update, @participante %>
+        <td><%= link_to 'Editar', edit_participacao_path(participante) %></td>
+    <% end %>
+        <% if can? :delete, @participante %>
+        <td><%= link_to 'Remover', participante, method: :delete%></td>
+    <% end %>
+</p>
+<% end %>

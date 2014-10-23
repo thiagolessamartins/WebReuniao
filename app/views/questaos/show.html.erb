@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Titulo:</strong>
+  <%= @questao.titulo %>
+</p>
+
+<p>
+  <strong>Data:</strong>
+  <%= @questao.created_at.strftime("%d/%m/%Y") %>
+</p>
+
+
+
+<p>
+  <strong>Pessoa que criou esta questão:</strong>
+  <%= @questao.pessoa.nome %>
+</p>
+
+        <% if can? :update, @questao %>
+<%= link_to 'Editar', edit_questao_path(@questao) %> 
+    <% end %>
+
+
+<h1>Pontos</h1>
+<%= render'pontos' %>
+
+        <% if can? :create, @ponto %>
+<%= link_to "Novo Ponto", controller: "pontos",
+action: "new",
+questao: @questao %>
+    <% end %>
+
+
+
+
+
+

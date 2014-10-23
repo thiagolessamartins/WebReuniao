@@ -1,0 +1,21 @@
+
+<p>    
+ <strong>Questão:</strong>
+	<%= @sugestao_item_pautum.questao.titulo  %>
+
+</p>
+<p>    
+ <strong>Sugerida por:</strong>
+	<%= @sugestao_item_pautum.pessoa.nome  %>
+
+</p>
+<h2>Pontos da questão</h2>
+<% @sugestao_item_pautum.questao.pontos.each do |ponto|  %>
+<p>    
+ <strong>Titulo:</strong>
+	<%= ponto.titulo %>
+</p>
+
+
+<% end %>
+

@@ -1,0 +1,40 @@
+<h1>Listing pontos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>Data</th>
+      <th>Staus</th>
+      <th>Solucao</th>
+      <th>Questao</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pontos.each do |ponto| %>
+      <tr>
+        <td><%= ponto.titulo %></td>
+        <td><%= ponto.data %></td>
+        <td><%= ponto.staus %></td>
+        <td><%= ponto.solucao %></td>
+        <td><%= ponto.questao %></td>
+        <% if can? :read, @ponto %>
+        <td><%= link_to 'Show', ponto %></td>
+    <% end %>
+        <% if can? :update, @ponto %>
+        <td><%= link_to 'Edit', edit_ponto_path(ponto) %></td>
+    <% end %>
+        <% if can? :delete, @ponto %>
+        <td><%= link_to 'Destroy', ponto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+        <% if can? :create, @ponto %>
+<%= link_to 'New Ponto', new_ponto_path %>
+    <% end %>

@@ -1,0 +1,121 @@
+class ReuniaosController < ApplicationController 
+  load_and_authorize_resource
+  before_action :set_reuniao, only: [:show, :edit, :update, :destroy]
+
+  # GET /reuniaos
+  # GET /reuniaos.json
+  def index
+
+if params[:q] !=nil
+
+    @reuniaos = Reuniao.created_between(params[:q],params[:o])
+
+
+else
+    @reuniaos = Reuniao.buscaTitulo(params[:p])
+    #@pessoa = Pessoa.all
+end
+
+
+
+    #@reuniaos=Reuniao.all
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @reuniaos }
+    end
+   
+  end
+
+  # GET /reuniaos/1
+  # GET /reuniaos/1.json
+  def show
+  end
+
+  # GET /reuniaos/new
+  def new
+    @reuniao = Reuniao.new
+  end
+
+  # GET /reuniaos/1/edit
+  def edit
+  end
+
+  # POST /reuniaos
+  # POST /reuniaos.json
+  def create
+    @reuniao = Reuniao.new(reuniao_params)
+    @pautum=Pautum.new
+    @reuniao.pautum =@pautum
+    @reuniao.atum=Atum.new
+    @reuniao.status="Preparação"
+    @pautum.status="Preparação"
+    
+    respond_to do |format|
+      if @reuniao.save
+    @pautum.titulo=@reuniao.titulo
+    @pautum.save
+        format.html { redirect_to @reuniao, notice: 'Reuniao was successfully created.' }
+        format.json { render :show, status: :created, location: @reuniao }
+      else
+        format.html { render :new }
+        format.json { render json: @reuniao.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /reuniaos/1
+  # PATCH/PUT /reuniaos/1.json
+  def update
+    @teste=Reuniao.new(reuniao_params)
+    if @reuniao.status =="finalizada"      
+        redirect_to @reuniao , notice: 'Desculpe mas,reuniao finalizada não pode ser auterada.'
+     
+    else
+    respond_to do |format|
+
+      if @reuniao.update(reuniao_params)
+        @pautum=Pautum.search(@reuniao.pautum)
+        @pautum[0].status=@reuniao.status
+        @pautum[0].save
+
+        @atum=Atum.search(@reuniao.atum)
+        @atum[0].status=@reuniao.status
+        @atum[0].save
+        format.html { redirect_to @reuniao, notice: 'Reuniao was successfully updated.' }
+        format.json { render :show, status: :ok, location: @reuniao }
+      else
+        format.html { render :edit }
+        format.json { render json: @reuniao.errors, status: :unprocessable_entity }
+      end
+    end
+    end
+  end
+
+  # DELETE /reuniaos/1
+  # DELETE /reuniaos/1.json
+  def destroy
+
+    if @reuniao.status=="Preparação"
+      @reuniao.destroy
+    respond_to do |format|
+      format.html { redirect_to reuniaos_url, notice: 'Reuniao was successfully destroyed.' }
+      format.json { head :no_content }
+        end
+    else
+
+        redirect_to @reuniao , notice: 'Desculpe mas,reuniao já foi confirmada você não pode remove-la.'
+    
+    end
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_reuniao
+      @reuniao = Reuniao.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def reuniao_params
+      params.require(:reuniao).permit(:titulo, :data, :horaInicio, :horaFim, :status, :local_id, :pautum_id, :atum_id, :category_id)
+    end
+end

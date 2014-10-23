@@ -1,0 +1,39 @@
+<h1>Confirma sua presença na reunião?</h1>
+
+<%= form_for(@convocado) do |f| %>
+  <% if @convocado.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@convocado.errors.count, "error") %> prohibited this convocado from being saved:</h2>
+
+      <ul>
+      <% @convocado.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :motivoAusencia %><br>
+    <%= f.text_area :motivoAusencia %>
+  </div>
+  <div class="field">
+
+
+    <%= f.label :presenca %><br>
+    <%= f.collection_select :presenca, Convocado::Presenca, :to_s, :upcase %></br>
+
+  </div>
+
+
+  <div class="field">
+    <%= f.label :reuniao_id %><br>
+        <%= f.hidden_field 'reuniao_id' %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Salvar" %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Voltar', reuniao_path(@convocado.reuniao) %>

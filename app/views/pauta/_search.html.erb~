@@ -1,0 +1,16 @@
+<% @pautum.item_pautums.each do |item_pautum|  %>
+
+<p>
+  <strong><%= item_pautum.questao.titulo %>: <%= link_to 'Visualize a questão'questao_path(@item_pautum.questao) %></strong> 
+        <% if can? :delete, @item_pautum %>
+        <td><%= link_to 'Remover', item_pautum, method: :delete%></td>
+    <% end %>
+        <% if can? :update, @item_pautum %>
+        <td><%= link_to 'Editar', edit_item_pautum_path(item_pautum) %></td>
+    <% end %>
+</p>
+
+<% end %>
+
+
+

@@ -1,0 +1,18 @@
+<% @questao.pontos.each do |ponto|  %>
+<p>    
+ <strong>Titulo:</strong>
+	<%= ponto.titulo %>
+</p>
+
+
+<p>
+	<%= link_to 'Edit', edit_ponto_path(ponto) %>
+</p>
+<p>
+
+
+</p>
+
+<% end %>
+
+

@@ -1,0 +1,36 @@
+<h1>Listing item_pauta</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Observacao</th>
+      <th>Pautum</th>
+      <th>Questao</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @item_pauta.each do |item_pautum| %>
+      <tr>
+        <td><%= item_pautum.observacao %></td>
+        <td><%= item_pautum.pautum %></td>
+        <td><%= item_pautum.questao %></td>
+        <% if can? :read, @item_pautum %>
+        <td><%= link_to 'Show', item_pautum %></td>
+    <% end %>
+        <% if can? :update, @item_pautum %>
+        <td><%= link_to 'Edit', edit_item_pautum_path(item_pautum) %></td>
+    <% end %>
+        <% if can? :delete, @item_pautum %>
+        <td><%= link_to 'Destroy', item_pautum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+        <% if can? :create, @item_pautum %>
+<%= link_to 'New Item pautum', new_item_pautum_path %>
+    <% end %>

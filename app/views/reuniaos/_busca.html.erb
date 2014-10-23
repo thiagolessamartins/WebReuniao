@@ -1,0 +1,12 @@
+<%= form_tag(reuniaos_path, :method => "get") do %>
+
+  <%= label_tag(:search_query, "Data inicio:") %>
+  <%= date_field_tag :q, @search_query %>
+
+  <%= label_tag(:search_query, "Data fim:") %>
+  <%= date_field_tag :o, @search_query %>
+
+  <%= submit_tag("Buscar") %>
+
+
+<% end %>

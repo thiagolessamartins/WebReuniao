@@ -1,0 +1,42 @@
+<h1>Listing sugestao_item_pauta</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Aprovar</th>
+      <th>Motivosugestao</th>
+      <th>Motivoreprovar</th>
+      <th>Pessoa</th>
+      <th>Reuniao</th>
+      <th>Questao</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sugestao_item_pauta.each do |sugestao_item_pautum| %>
+      <tr>
+        <td><%= sugestao_item_pautum.aprovar %></td>
+        <td><%= sugestao_item_pautum.motivoSugestao %></td>
+        <td><%= sugestao_item_pautum.motivoReprovar %></td>
+        <td><%= sugestao_item_pautum.pessoa %></td>
+        <td><%= sugestao_item_pautum.reuniao %></td>
+        <td><%= sugestao_item_pautum.questao %></td>
+        <% if can? :read, @sugestao_item_pauta %>
+        <td><%= link_to 'Show', sugestao_item_pautum %></td>
+    <% end %>
+        <% if can? :update, @sugestao_item_pauta %>
+        <td><%= link_to 'Edit', edit_sugestao_item_pautum_path(sugestao_item_pautum) %></td>
+    <% end %>
+        <% if can? :delete, @sugestao_item_pauta %>
+        <td><%= link_to 'Destroy', sugestao_item_pautum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+        <% if can? :create, @sugestao_item_pauta %>
+<%= link_to 'New Sugestao item pautum', new_sugestao_item_pautum_path %>
+    <% end %>

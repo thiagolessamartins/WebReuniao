@@ -1,0 +1,39 @@
+<h1>Lista de questões</h1>
+<%= render 'busca' %>
+<%= render 'matricula' %>
+<table>
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>Data</th>
+
+      <th>Pessoa</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @questaos.each do |questao| %>
+      <tr>
+        <td><%= questao.titulo %></td>
+        <td><%= questao.data %></td>
+
+        <td><%= questao.pessoa.nome %></td>
+        <% if can? :read, @questao %>
+        <td><%= link_to 'Exibir', questao %></td>
+    <% end %>
+        <% if can? :update, @questao %>
+        <td><%= link_to 'Editar', edit_questao_path(questao) %></td>
+    <% end %>
+        <% if can? :delete, @questao %>
+        <td><%= link_to 'Remover', questao, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+        <% if can? :create, @questao %>
+<%= link_to 'Cadastrar Questão', new_questao_path %>
+    <% end %>

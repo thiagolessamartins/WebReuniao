@@ -1,0 +1,32 @@
+
+<% @reuniao.convocados.each do |convocado|  %>
+<p>    
+ <strong>Nome:</strong>
+	<%= convocado.pessoa.nome %>
+
+
+ <strong>Presença confirmada ?:</strong>
+	<%= convocado.presenca %>
+
+        <% if convocado.pessoa.user != nil %>
+ <strong>Papel na reunião:</strong>
+	<%= convocado.pessoa.user.role %>
+    <% end %>
+</p>
+
+<p>
+        <% if can? :update, @convocado %>
+        <td><%= link_to 'Editar', edit_convocado_path(convocado) %></td>
+    <% end %>
+        <% if can? :delete, @convocado %>
+        <td><%= link_to 'Remover', convocado, method: :delete%></td>
+    <% end %>
+</p>
+<p>
+
+
+</p>
+
+<% end %>
+
+

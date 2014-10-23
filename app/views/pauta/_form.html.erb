@@ -1,0 +1,29 @@
+<%= form_for(@pautum) do |f| %>
+  <% if @pautum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pautum.errors.count, "error") %> prohibited this pautum from being saved:</h2>
+
+      <ul>
+      <% @pautum.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :titulo %><br>
+    <%= f.text_field :titulo %>
+  </div>
+  <div class="field">
+    <%= f.label :data %><br>
+    <%= f.date_select :data %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Salvar Pauta" %>
+  </div>
+<% end %>

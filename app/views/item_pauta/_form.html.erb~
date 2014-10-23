@@ -1,0 +1,26 @@
+<%= form_for(@item_pautum) do |f| %>
+  <% if @item_pautum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item_pautum.errors.count, "error") %> prohibited this item_pautum from being saved:</h2>
+
+      <ul>
+      <% @item_pautum.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+
+        <%= f.hidden_field 'pautum_id' %>
+  </div>
+  <div class="field">
+    <%= f.label :questao_id "Questão"%><br>
+    <%= f.collection_check_boxes(:questao_id, Questao.order(:id),:id, :titulo, :prompt => true) %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Salvar Item da Pauta"%>
+  </div>
+<% end %>

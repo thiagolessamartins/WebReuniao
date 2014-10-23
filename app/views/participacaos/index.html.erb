@@ -1,0 +1,36 @@
+<h1>Listing participacaos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Contribuicao</th>
+      <th>Pessoa</th>
+      <th>Reuniao</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @participacaos.each do |participacao| %>
+      <tr>
+        <td><%= participacao.contribuicao %></td>
+        <td><%= participacao.pessoa %></td>
+        <td><%= participacao.reuniao %></td>
+        <% if can? :read, @participacao %>
+        <td><%= link_to 'Show', participacao %></td>
+    <% end %>
+        <% if can? :update, @participacao %>
+        <td><%= link_to 'Edit', edit_participacao_path(participacao) %></td>
+    <% end %>
+        <% if can? :delete, @participacao %>
+        <td><%= link_to 'Destroy', participacao, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+        <% if can? :update, @participacao %>
+<%= link_to 'New Participacao', new_participacao_path %>
+    <% end %>

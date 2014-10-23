@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  aprovar: MyString
+  motivoSugestao: MyString
+  motivoReprovar: MyString
+  pessoa_id: 
+  reuniao_id: 
+  questao_id: 
+
+two:
+  aprovar: MyString
+  motivoSugestao: MyString
+  motivoReprovar: MyString
+  pessoa_id: 
+  reuniao_id: 
+  questao_id: 

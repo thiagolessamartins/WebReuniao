@@ -1,0 +1,41 @@
+<h1>Avaliar sugestão de item de pauta</h1>
+
+
+<%= render 'questaoSugerida' %>
+
+<%= render 'motivoSugestao' %>
+<%= form_for(@sugestao_item_pautum) do |f| %>
+  <% if @sugestao_item_pautum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sugestao_item_pautum.errors.count, "error") %> prohibited this sugestao_item_pautum from being saved:</h2>
+
+      <ul>
+      <% @sugestao_item_pautum.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :aprovar %><br>
+    <%= f.collection_select :aprovar, SugestaoItemPautum::Aprovar, :to_s, :upcase %></br>
+  </div>
+
+  <div class="field">
+    <%= f.label :"Motivo da reprovação:" %><br>
+    <%= f.text_area :motivoReprovar %>
+  </div>
+
+  <div class="field">
+    <%= f.label :reuniao_id %><br>
+        <%= f.hidden_field 'reuniao_id' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Salvar Sugestão"%>
+  </div>
+<% end %>
+
+<%= link_to 'Exibir', @sugestao_item_pautum %> |
+<%= link_to 'Voltar', reuniao_path(@sugestao_item_pautum.reuniao) %>

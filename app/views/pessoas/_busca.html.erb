@@ -1,0 +1,7 @@
+<%= form_tag(pessoas_path, :method => "get") do %>
+
+  <%= label_tag(:search_query, "Matricula:") %>
+  <%= number_field_tag :p, @search_query %>
+  <%= submit_tag("Buscar") %>
+
+<% end %>

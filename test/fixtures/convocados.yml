@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  motivoAusencia: MyString
+  presenca: MyString
+  status: MyString
+  pessoa_id: 
+  reuniao_id: 
+
+two:
+  motivoAusencia: MyString
+  presenca: MyString
+  status: MyString
+  pessoa_id: 
+  reuniao_id: 

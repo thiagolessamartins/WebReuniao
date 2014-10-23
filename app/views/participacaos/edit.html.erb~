@@ -1,0 +1,32 @@
+<h1>Participação</h1>
+
+<%= form_for(@participacao) do |f| %>
+  <% if @participacao.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@participacao.errors.count, "error") %> prohibited this participacao from being saved:</h2>
+
+      <ul>
+      <% @participacao.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :contribuicao %><br>
+    <%= f.text_area :contribuicao %>
+  </div>
+
+  <div class="field">
+    <%= f.label :reuniao_id %><br>
+
+        <%= f.hidden_field 'reuniao_id' %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Salvar Participação"%>
+  </div>
+<% end %>
+
+
+

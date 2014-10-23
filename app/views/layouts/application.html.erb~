@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WebReuniao</title>
+    <%= favicon_link_tag 'favicon.ico' %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+	<div id="background">
+		<div id="page">
+			<div id="header">
+
+				<ul class="navigation">
+					<li>
+				               <a ><img id="logo" <%= image_tag "reuniao.png" %> ></a>
+
+					</li>
+					<li>
+						<a><%= link_to "Inicio", root_path %></a>
+					</li>
+
+					<li>
+						<a><%= link_to "Reunião", reuniaos_path %></a>
+					</li>
+					<li>
+                                                    <% if can? :create, @local %>
+						<a><%= link_to "Cadastrar Local", new_local_path %></a>
+                                                    <% end %>
+					</li>
+					<li>
+						<a> <%= link_to "Cadastrar Questao", new_questao_path %></a>
+					</li>
+
+
+					<li>
+						<a>        <% if user_signed_in? %>
+          Logged in as <strong><% if current_user.pessoa %><%= current_user.pessoa.nome %><% end %></strong>.
+          <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+        <% else %>
+          <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+          <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+        <% end %></a>
+					</li>
+				</ul>
+
+
+
+			</div>
+       <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+<%= yield %>
+		   </div>
+	     </div>
+                 
+
+
+
+
+
+
+</body>
+</html>

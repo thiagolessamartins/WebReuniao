@@ -1,0 +1,21 @@
+<% @reuniao.sugestao_item_pautums.each do |sugestao|  %>
+<p>    
+ <strong>Titulo: </strong>
+	<%= sugestao.questao.titulo %>
+</p>
+
+
+<p>
+        <% if can? :update, @sugestao_item_pautum %>
+        <td><%= link_to 'Editar', edit_sugestao_item_pautum_path(sugestao) %></td>
+    <% end %>
+        <% if can? :delete, @sugestao_item_pautum %>
+        <td><%= link_to 'Remover', sugestao, method: :delete%></td>
+    <% end %>
+</p>
+<p>
+
+
+</p>
+
+<% end %>

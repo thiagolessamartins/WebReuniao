@@ -1,0 +1,9 @@
+<%= form_tag(questaos_path, :method => "get") do %>
+
+  <%= label_tag(:search_query, "matricula:") %>
+  <%= number_field_tag :q, @search_query %>
+  <%= submit_tag("Buscar") %>
+
+
+
+<% end %>

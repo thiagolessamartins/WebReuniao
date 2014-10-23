@@ -1,0 +1,4 @@
+class Ponto < ActiveRecord::Base
+  belongs_to :questao
+  scope :buscarPonto, lambda {|questao| where("questao_id == ? ", questao )}
+end

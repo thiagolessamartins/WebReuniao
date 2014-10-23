@@ -1,0 +1,40 @@
+<h1>Listing locals</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Uf</th>
+      <th>Cidade</th>
+      <th>Endereco</th>
+      <th>Complemento</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @locals.each do |local| %>
+      <tr>
+        <td><%= local.uf %></td>
+        <td><%= local.cidade %></td>
+        <td><%= local.endereco %></td>
+        <td><%= local.complemento %></td>
+        <td><%= local.status %></td>
+        <% if can? :read, @local %>
+        <td><%= link_to 'Show', local %></td>
+    <% end %>
+        <% if can? :update, @local %>
+        <td><%= link_to 'Edit', edit_local_path(local) %></td>
+    <% end %>
+        <% if can? :delete, @local %>
+        <td><%= link_to 'Destroy', local, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+        <% if can? :create, @local %>
+<%= link_to 'New Local', new_local_path %>
+    <% end %>

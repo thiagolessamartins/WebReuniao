@@ -1,0 +1,35 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uf:</strong>
+  <%= @local.uf %>
+</p>
+
+<p>
+  <strong>Cidade:</strong>
+  <%= @local.cidade %>
+</p>
+
+<p>
+  <strong>Endereco:</strong>
+  <%= @local.endereco %>
+</p>
+
+<p>
+  <strong>Complemento:</strong>
+  <%= @local.complemento %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @local.status %>
+</p>
+        <% if can? :update, @local %>
+<%= link_to 'Edit', edit_local_path(@local) %> |
+    <% end %>
+<%= link_to 'Back', locals_path %>

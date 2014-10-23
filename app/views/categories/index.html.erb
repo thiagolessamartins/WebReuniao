@@ -1,0 +1,32 @@
+<h1>Lista de categorias</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.titulo %></td>
+        <% if can? :read, @category %>
+        <td><%= link_to 'exibir', category %></td>
+    <% end %>
+        <% if can? :update, @category %>
+        <td><%= link_to 'Editar', edit_category_path(category) %></td>
+    <% end %>
+        <% if can? :delete, @category %>
+        <td><%= link_to 'Remover', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+        <% if can? :create, @category %>
+<%= link_to 'Nova Categoria', new_category_path %>
+    <% end %>

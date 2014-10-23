@@ -1,0 +1,23 @@
+<% @questao.pontos.each do |ponto|  %>
+<p>    
+ <strong>Titulo:</strong>
+	<%= ponto.titulo %>
+</p>
+
+
+<p>
+        <% if can? :update, @ponto %>
+	<%= link_to 'Editar', edit_ponto_path(ponto) %>
+    <% end %>
+        <% if can? :delete, @ponto %>
+        <td><%= link_to 'Remover', ponto, method: :delete%></td>
+    <% end %>
+</p>
+<p>
+
+
+</p>
+
+<% end %>
+
+

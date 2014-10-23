@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Contribuicao:</strong>
+  <%= @participacao.contribuicao %>
+</p>
+
+<p>
+  <strong>Pessoa:</strong>
+  <%= @participacao.pessoa %>
+</p>
+
+<p>
+  <strong>Reuniao:</strong>
+  <%= @participacao.reuniao %>
+</p>
+        <% if can? :update, @participacao %>
+<%= link_to 'Edit', edit_participacao_path(@participacao) %> |
+        <% end %>
+<%= link_to 'Back', participacaos_path %>

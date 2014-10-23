@@ -1,0 +1,6 @@
+<h1>Editing pautum</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @pautum %> |
+<%= link_to 'Back', pauta_path %>

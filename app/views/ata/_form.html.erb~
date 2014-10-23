@@ -1,0 +1,22 @@
+<%= form_for(@atum) do |f| %>
+  <% if @atum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@atum.errors.count, "error") %> prohibited this atum from being saved:</h2>
+
+      <ul>
+      <% @atum.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= f.label :documento %><br>
+    <%= f.file_field :documento %>
+  </div>
+  <div class="actions">
+    <%= f.submit "aaaa"%>
+  </div>
+<% end %>

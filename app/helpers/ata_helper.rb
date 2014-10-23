@@ -1,0 +1,2 @@
+module AtaHelper
+end

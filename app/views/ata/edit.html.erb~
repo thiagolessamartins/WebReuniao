@@ -1,0 +1,6 @@
+<h1>Editing atum</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @atum %> |
+<%= link_to 'Back', ata_path %>

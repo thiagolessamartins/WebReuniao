@@ -1,0 +1,29 @@
+class Questao < ActiveRecord::Base
+  belongs_to :pessoa
+  has_many :pontos
+  belongs_to :user
+ has_many :item_pautums
+
+  #scope :buscaPessoa, lambda {|query| where("pessoa_id == ? ", query )}
+
+  def self.buscaPessoa(query)
+
+   if query.present? 
+
+           where(["pessoa_id = :query", query: query])
+   else
+      where(['status LIKE ""', query:"%#{""}%"])
+   end
+  end
+
+
+ # scope :buscaQuestao, lambda {|query| where("titulo LIKE  ? ", query )}
+
+  def self.buscaQuestao(query)
+   if query.present? 
+      where(['titulo LIKE :query ', query:"%#{query}%"])
+   else
+      where(['data LIKE ""', query:"%#{""}%"])
+   end
+end
+end

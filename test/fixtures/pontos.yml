@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  titulo: MyString
+  data: 2014-09-07
+  staus: MyString
+  solucao: MyText
+  questao_id: 
+
+two:
+  titulo: MyString
+  data: 2014-09-07
+  staus: MyString
+  solucao: MyText
+  questao_id: 

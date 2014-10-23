@@ -1,0 +1,6 @@
+<p>
+  <strong>Motivosugestao:</strong>
+  <%= @sugestao_item_pautum.motivoSugestao %>
+</p>
+
+

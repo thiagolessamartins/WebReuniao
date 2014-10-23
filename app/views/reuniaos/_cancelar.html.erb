@@ -1,0 +1,11 @@
+<%= form_for(@reuniao) do |f| %>
+
+
+  <div class="field">
+    <%= f.label :status %><br>
+    <%= f.collection_select :status, Reuniao::Status, :to_s, :upcase %></br>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

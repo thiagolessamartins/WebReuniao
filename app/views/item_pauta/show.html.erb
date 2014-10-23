@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Observacao:</strong>
+  <%= @item_pautum.observacao %>
+</p>
+
+<p>
+  <strong>Pautum:</strong>
+  <%= @item_pautum.pautum %>
+</p>
+
+<p>
+  <strong>Questao:</strong>
+  <%= @item_pautum.questao %>
+</p>
+        <% if can? :update, @item_pautum %>
+<%= link_to 'Edit', edit_item_pautum_path(@item_pautum) %> |
+    <% end %>
+<%= link_to 'Back', pautum_path(@item_pautum.pautum) %>

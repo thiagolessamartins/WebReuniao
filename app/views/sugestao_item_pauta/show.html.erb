@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Aprovar:</strong>
+  <%= @sugestao_item_pautum.aprovar %>
+</p>
+
+<p>
+  <strong>Motivosugestao:</strong>
+  <%= @sugestao_item_pautum.motivoSugestao %>
+</p>
+
+<p>
+  <strong>Motivoreprovar:</strong>
+  <%= @sugestao_item_pautum.motivoReprovar %>
+</p>
+
+<p>
+  <strong>Pessoa:</strong>
+  <%= @sugestao_item_pautum.pessoa %>
+</p>
+
+<p>
+  <strong>Reuniao:</strong>
+  <%= @sugestao_item_pautum.reuniao %>
+</p>
+
+<p>
+  <strong>Questao:</strong>
+  <%= @sugestao_item_pautum.questao %>
+</p>
+        <% if can? :update, @sugestao_item_pautum %>
+<%= link_to 'Editar', edit_sugestao_item_pautum_path(@sugestao_item_pautum) %> |
+        <% end %>
+<%= link_to 'Voltar', reuniao_path(@sugestao_item_pautum.reuniao) %>

@@ -1,0 +1,40 @@
+<h1>Listing convocados</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Motivoausencia</th>
+      <th>Presenca</th>
+
+      <th>Pessoa</th>
+      <th>Reuniao</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @convocados.each do |convocado| %>
+      <tr>
+        <td><%= convocado.motivoAusencia %></td>
+        <td><%= convocado.presenca %></td>
+
+        <td><%= convocado.pessoa %></td>
+        <td><%= convocado.reuniao %></td>
+        <% if can? :read, @convocado %>
+        <td><%= link_to 'Show', convocado %></td>
+    <% end %>
+        <% if can? :update, @convocado %>
+        <td><%= link_to 'Edit', edit_convocado_path(convocado) %></td>
+    <% end %>
+        <% if can? :delete, @convocado %>
+        <td><%= link_to 'Destroy', convocado, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+        <% if can? :create, @convocado %>
+<%= link_to 'New Convocado', new_convocado_path %>
+    <% end %>

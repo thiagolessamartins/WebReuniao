@@ -1,0 +1,9 @@
+<%= form_tag(reuniaos_path, :method => "get") do %>
+
+  <%= label_tag(:search_query, "Titulo:") %>
+  <%= text_field_tag :p, @search_query %>
+  <%= submit_tag("Search") %>
+
+
+
+<% end %>

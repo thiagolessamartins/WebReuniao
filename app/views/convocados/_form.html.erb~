@@ -1,0 +1,29 @@
+<%= form_for(@convocado) do |f| %>
+  <% if @convocado.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@convocado.errors.count, "error") %> prohibited this convocado from being saved:</h2>
+
+      <ul>
+      <% @convocado.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= f.label :pessoa_id %><br>
+    <%= f.collection_check_boxes(:pessoa_id, Pessoa.order(:nome),:id, :nome, :prompt => true) %>
+  </div>
+  <div class="field">
+    <%= f.label :reuniao_id %><br>
+        <%= f.hidden_field 'reuniao_id' %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+

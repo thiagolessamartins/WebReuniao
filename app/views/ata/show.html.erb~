@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong></strong>
+</p>
+<p>
+  <strong>cu:</strong>
+</p>
+<p>
+
+        <% if @atum.documento? %>
+<iframe src=<%= @atum.documento %> width="600" height="780" style="border: none;"> </iframe>
+
+        <% end %>
+
+</p>
+                   <% if current_user.role == "coordenador" or current_user.role == "secretario" %>
+       <p> <% if can? :update, @atum %>
+<%= link_to 'Editar', edit_atum_path(@atum) %> |
+        <% end %></p>
+
+        <% end %>

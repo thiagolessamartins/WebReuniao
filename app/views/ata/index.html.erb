@@ -1,0 +1,34 @@
+<h1>Listing ata</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>Pdfata</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ata.each do |atum| %>
+      <tr>
+        <td><%= atum.status %></td>
+        <td><%= atum.documento %></td>
+        <% if can? :read, @atum %>
+        <td><%= link_to 'Show', atum %></td>
+        <% end %>
+        <% if can? :update, @atum %>
+        <td><%= link_to 'Edit', edit_atum_path(atum) %></td>
+        <% end %>
+        <% if can? :delete, @atum %>
+        <td><%= link_to 'Destroy', atum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+        <% if can? :create, @atum %>
+<%= link_to 'New Atum', new_atum_path %>
+        <% end %>

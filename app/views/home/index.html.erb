@@ -1,0 +1,35 @@
+
+			<div id="background">
+
+				<ul>
+					<li>
+
+						<a> <%= link_to "Cadastrar Categoria", new_category_path %></a>
+
+					</li>
+					<li>
+
+						<a> <%= link_to "Listar Categorias", categories_path %></a>
+	
+
+					</li>
+					<li>
+                                                    <% if can? :read, @pessoa %>
+						<a> <%= link_to "Buscar Pessoa", pessoas_path %></a>
+                                                    <% end %>
+					</li>
+					<li>
+                                                    <% if can? :read, @questao %>
+						<a> <%= link_to "Buscar Questão", questaos_path %></a>
+                                                    <% end %>
+					</li>
+
+					<li>
+                                                    <% if can? :create, @pessoa %>
+						<a> <%= link_to "Cadastrar Pessoa", new_pessoa_path %></a>
+                                                    <% end %>
+					</li>
+				</ul>
+
+			</div>
+

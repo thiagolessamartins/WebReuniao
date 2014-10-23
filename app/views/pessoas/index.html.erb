@@ -1,0 +1,36 @@
+<h1>Buscar pessoas</h1>
+
+<%= render 'search' %>
+<%= render 'busca' %>
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Papel</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pessoas.each do |pessoa| %>
+      <tr>  
+        <td><%= pessoa.nome %></td>
+        <td><%= pessoa.role %></td>
+                <% if can? :read, @pessoa %>
+
+        <td><%= link_to 'Exibir', pessoa %></td>
+        <% end %>
+        <% if can? :update, @pessoa %>
+        <td><%= link_to 'Editar', edit_pessoa_path(pessoa) %></td>
+        <% end %>
+        <% if can? :delete, @pessoa %>
+        <td><%= link_to 'Remover', pessoa, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
