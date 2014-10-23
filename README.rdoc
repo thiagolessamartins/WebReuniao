@@ -3,3 +3,8 @@
 É importante lembrar que para usar o upload dos pdf das atas é necessario que instalem no ubuntu de vocês o imagemagick, por conta da gem paperclip.
 A instalação pode ser feita pela central de programas do ubuntu.
 
+
+
+ao efetuar um cadastro no sistema você deve criar uma pessoa, que  sera sua representação no sistema, as demais pessoas que criar seram outros usuarios ou não 
+
+
